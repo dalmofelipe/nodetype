@@ -1,25 +1,17 @@
-import express, { Application, Request, Response, NextFunction } from 'express';
-import { Sequelize } from 'sequelize-typescript';
-import { User } from './models/user.model';
+import dotenv from 'dotenv';
+import express, { Application, NextFunction, Request, Response } from 'express';
 import routes from './routes';
+import database from './database';
+
+dotenv.config();
 
 const app: Application = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3333;
 
 app.use(express.json());
 app.use('/api', routes);
 
-// Configurar Sequelize
-const sequelize = new Sequelize({
-    database: 'devdb',
-    dialect: 'mysql',
-    username: 'myuser',
-    password: '123123',
-    //storage: ':memory:',
-    models: [User],
-});
-
-sequelize.sync({ force: false }).then(() => {
+database.sync({ force: false }).then(() => {
     console.log('Database & tables created!');
 });
 
