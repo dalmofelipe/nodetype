@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
 import { User } from '../models/user.model';
 
 class UserController {
@@ -13,13 +14,15 @@ class UserController {
     }
 
     async create(req: Request, res: Response): Promise<void> {
+        const result = validationResult(req);
+        if (!result.isEmpty()) {
+            res.send({ errors: result.array() });
+            return
+        }
+               
         try {
             const { name, email, password } = req.body;
-            const userDb = await User.findOne({
-                where: {
-                    email
-                }
-            })
+            const userDb = await User.findOne({ where: { email } })
             if (userDb != null) {
                 res.status(422).json({ msg: 'Email Already In Use' });
                 return
