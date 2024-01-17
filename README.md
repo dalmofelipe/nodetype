@@ -1,4 +1,9 @@
 
 ```shell
-docker run -itd -p 5000:3333 -e DB_STRING_CONN=mysql://myuser:123123@mysql-db/devdb --name teste-node-type --network nodejs-typescript-sequelize_database-network dalmofelipe/nodetype:0.1.0
+docker build -t dalmofelipe/nodetype:0.1.4 .
+```
+
+
+```shell
+docker run -dit --name nodetype -p 5000:3000 -e PORT=3000 -e DB_STRING_CONN=mysql://myuser:123123@mysql-db/devdb --network=nodejs-typescript-sequelize_database-network dalmofelipe/nodetype:0.1.4
 ```

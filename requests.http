@@ -8,7 +8,7 @@ POST {{host}}/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "docker da massa",
-    "email": "dockernerizarado@email.com",
-    "password": "docker na lagoa"
+    "name": "docker-0.1.4",
+    "email": "docker0.1.4@email.com",
+    "password": "d0ck3r014"
 }
