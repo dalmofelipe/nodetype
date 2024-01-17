@@ -1,2 +1,4 @@
 - [ ] validações de entrada de dados
 - [x] dot env + database conf
+- [x] dockerfile build image
+- [ ] dockerfile para mutlstage build
