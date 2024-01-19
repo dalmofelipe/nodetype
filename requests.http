@@ -3,6 +3,9 @@
 ###
 GET {{host}}/api/users HTTP/1.1
 
+###
+GET {{host}}/api/users/27 HTTP/1.1
+
 ### busca usuários Felipe que usam gmail
 GET {{host}}/api/users?email=gmail&name=Felipe HTTP/1.1
 
@@ -11,7 +14,7 @@ POST {{host}}/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Dalmo",
-    "email": "dalmo@gmail.com",
+    "name": "Felipe",
+    "email": "felipe@gmail.com",
     "password": "123321"
 }

@@ -9,8 +9,8 @@ class UserController {
         try {
             const { name, email } = req.query
             const users = await User.findAll({
-                attributes: {exclude: ['password']},
-                order: [['id','DESC']],
+                attributes: { exclude: ['password'] },
+                order: [ ['id','DESC'] ],
                 where: {
                     [Op.and]: {
                         name: {
@@ -23,6 +23,20 @@ class UserController {
                 }
             });
             res.json(users);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    }
+
+    async getByID(req: Request, res: Response): Promise<void> {
+        try {
+            const { id } = req.params
+            const userDb = await User.findOne({ 
+                attributes: { exclude: ['password'] },
+                where: { id } 
+            })
+            res.json(userDb);
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });

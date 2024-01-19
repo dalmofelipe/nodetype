@@ -31,6 +31,10 @@ const router = Router();
  */
 router.get('/users', UserController.getAll);
 
+
+router.get('/users/:id', UserController.getByID);
+
+
 /**
  * @swagger
  * /api/users:

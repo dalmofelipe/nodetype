@@ -1,4 +1,3 @@
 - [ ] completar o delete, read one e update do user crud
-- [ ] implementar getOne e getById em users
 - [ ] subir para um repo no github
 - [ ] github actions para build de imagens
