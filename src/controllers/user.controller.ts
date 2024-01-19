@@ -3,6 +3,7 @@ import { validationResult } from 'express-validator';
 import { User } from '../models/user.model';
 
 class UserController {
+
     async getAll(req: Request, res: Response): Promise<void> {
         try {
             const users = await User.findAll();
@@ -16,10 +17,10 @@ class UserController {
     async create(req: Request, res: Response): Promise<void> {
         const result = validationResult(req);
         if (!result.isEmpty()) {
-            res.send({ errors: result.array() });
+            res.status(422).send({ errors: result.array() });
             return
         }
-               
+
         try {
             const { name, email, password } = req.body;
             const userDb = await User.findOne({ where: { email } })
