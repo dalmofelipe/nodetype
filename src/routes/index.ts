@@ -2,7 +2,8 @@ import { Router } from 'express';
 import { checkSchema } from 'express-validator';
 import UserController from '../controllers/user.controller';
 import { 
-    userCreateValidationSchema 
+    userCreateValidationSchema,
+    userUpdateValidationSchema
 } from '../validations/user.validations';
 
 const router = Router();
@@ -84,5 +85,14 @@ router.get('/users/:id', UserController.getByID);
 router.post('/users', 
     checkSchema(userCreateValidationSchema, ['body']),
     UserController.create);
+
+
+router.put('/users/:id', 
+    checkSchema(userUpdateValidationSchema, ['body']), 
+    UserController.update)
+
+
+router.delete('/users/:id', UserController.delete)
+
 
 export default router;
