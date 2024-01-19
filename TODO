@@ -1,5 +1,4 @@
 - [ ] completar o delete, read one e update do user crud
 - [ ] implementar getOne e getById em users
-- [ ] hashing do password do usuário antes de salva no DB
 - [ ] subir para um repo no github
 - [ ] github actions para build de imagens

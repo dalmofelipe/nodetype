@@ -11,7 +11,7 @@ POST {{host}}/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Felipe",
-    "email": "felipe@gmail.com",
-    "password": "123123"
+    "name": "Dalmo",
+    "email": "dalmo@gmail.com",
+    "password": "123321"
 }

@@ -1,4 +1,5 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, BeforeCreate, BeforeUpdate } from 'sequelize-typescript';
+import bcrypt from 'bcrypt';
 
 @Table
 export class User extends Model {
@@ -20,4 +21,14 @@ export class User extends Model {
         allowNull: false,
     })
     password!: string;
+
+    @BeforeCreate
+    @BeforeUpdate
+    static hashPassword(instance: User) {
+        if (instance.changed('password')) {
+            const saltRounds = 10;
+            const hashedPassword = bcrypt.hashSync(instance.password, saltRounds);
+            instance.password = hashedPassword;
+        }
+    }
 }
