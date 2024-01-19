@@ -30,4 +30,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE  {{host}}/api/users/1 HTTP/1.1
+DELETE  {{host}}/api/users/30 HTTP/1.1

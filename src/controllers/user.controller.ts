@@ -98,8 +98,8 @@ class UserController {
     async delete(req: Request, res: Response): Promise<void> {
         try {
             const { id } = req.params
-            await User.destroy({ where: { id } })
-            res.status(200).send(`User ID "${id}" Deleted`);
+            const count = await User.destroy({ where: { id } })
+            res.status(200).send(`${count}`);
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });
