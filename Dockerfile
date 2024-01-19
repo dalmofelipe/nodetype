@@ -1,7 +1,8 @@
 ARG NODE_VERSION=14
+ARG APP_VERSION=0.1.0
+
 FROM node:${NODE_VERSION}-alpine as builder
 
-ARG APP_VERSION=0.1.0
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN apk add --no-cache --virtual .gyp python3 make g++
@@ -18,7 +19,8 @@ ENV PORT=3333
 
 WORKDIR /usr/src/app
 COPY package*.json ./
-COPY --from=builder /usr/src/app/node_modules ./node_modules
+RUN npm install
+
 COPY --from=builder /usr/src/app/dist ./dist
 
 EXPOSE ${PORT}
