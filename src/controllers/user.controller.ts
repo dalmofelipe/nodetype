@@ -1,12 +1,25 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import { User } from '../models/user.model';
+import { Op } from 'sequelize';
 
 class UserController {
 
     async getAll(req: Request, res: Response): Promise<void> {
         try {
-            const users = await User.findAll();
+            const { name, email } = req.query
+            const users = await User.findAll({
+                where: {
+                    [Op.and]: {
+                        name: {
+                            [Op.like]: `%${name || '' }%`
+                        },
+                        email: {
+                            [Op.like]: `%${email || '' }%`
+                        }
+                    },
+                }
+            });
             res.json(users);
         } catch (error) {
             console.error(error);

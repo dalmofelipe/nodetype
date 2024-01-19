@@ -2,5 +2,8 @@
 - [x] dot env + database conf
 - [x] dockerfile build image
 - [x] dockerfile para mutlstage build copiando node_modules do stage builder
-- [ ] mutlstage build sem copiar node_modulos do stage builder
-
+- [x] mutlstage build sem copiar node_modulos do stage builder
+- [x] buscar usuário por filtro de name e email
+- [ ] completar o delete, read one e update do user crud
+- [ ] implementar getOne e getById em users
+- [ ] hashing do password do usuário antes de salva no DB

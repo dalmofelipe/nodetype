@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import { checkSchema } from 'express-validator';
 import UserController from '../controllers/user.controller';
-import { userCreateValidationSchema } from '../validations/user.validations';
+import { 
+    userCreateValidationSchema 
+} from '../validations/user.validations';
 
 const router = Router();
 
@@ -12,6 +14,17 @@ const router = Router();
  *     summary: Retorna a lista de usuários
  *     tags:
  *     - users
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Texto para filtrar usuários por nome
+ *       - in: query
+ *         name: email
+ *         schema:
+ *           type: string
+ *         description: Texto para filtrar usuários por e-mail
  *     responses:
  *       200:
  *         description: Lista de usuários
@@ -64,6 +77,8 @@ router.get('/users', UserController.getAll);
  *                        location: 
  *                          type: string
  */
-router.post('/users', checkSchema(userCreateValidationSchema), UserController.create);
+router.post('/users', 
+    checkSchema(userCreateValidationSchema, ['body']),
+    UserController.create);
 
 export default router;
