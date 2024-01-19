@@ -1,5 +1,4 @@
 - [ ] implementar camanda user service
-- [ ] implementar jsdoc crud delete e update
 - [ ] implementar tests com  jest
 - [ ] subir para um repo no github
 - [ ] github actions para build de imagens

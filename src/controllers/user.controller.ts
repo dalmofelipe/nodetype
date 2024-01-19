@@ -59,7 +59,7 @@ class UserController {
             }
 
             const user = await User.create({ name, email, password });
-            res.json(user);
+            res.json({ ...user.dataValues, password:'Ofusqued' });
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });
@@ -88,7 +88,7 @@ class UserController {
                 userDb.password = password
             }
             await userDb.save()
-            res.status(200).json(userDb)
+            res.status(200).json({ ...userDb.dataValues, password: 'Ofusqued' })
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });
