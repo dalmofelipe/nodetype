@@ -10,7 +10,7 @@ const options = {
             description: 'API para cadastro, autenticação e autorização de usuários',
         },
     },
-    apis: ['./src/routes/*.ts']
+    apis: ['./dist/routes/*.js', './src/routes/*.ts']
 };
 
 const swaggerSpec = swaggerJSDoc(options);

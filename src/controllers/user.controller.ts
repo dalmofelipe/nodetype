@@ -9,6 +9,8 @@ class UserController {
         try {
             const { name, email } = req.query
             const users = await User.findAll({
+                attributes: {exclude: ['password']},
+                order: [['id','DESC']],
                 where: {
                     [Op.and]: {
                         name: {
