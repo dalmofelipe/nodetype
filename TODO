@@ -1,4 +1,10 @@
 - [ ] implementar camanda user service
-- [ ] implementar tests com  jest
+- [ ] implementar tests do crud com jest
+- [ ] finalizar user crud
 - [ ] subir para um repo no github
 - [ ] github actions para build de imagens
+- [ ] rotas para upload de arquivos
+- [ ] consumo e processamento de dados de apis externas
+- [ ] proteção de rotas com JWT
+- [ ] cache redis
+    1.  Armazenamento de sessões

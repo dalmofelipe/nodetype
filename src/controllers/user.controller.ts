@@ -1,27 +1,16 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import { User } from '../models/user.model';
-import { Op } from 'sequelize';
+import UserService from '../services/user.service';
 
 class UserController {
 
     async getAll(req: Request, res: Response): Promise<void> {
         try {
             const { name, email } = req.query
-            const users = await User.findAll({
-                attributes: { exclude: ['password'] },
-                order: [ ['id','ASC'] ],
-                where: {
-                    [Op.and]: {
-                        name: {
-                            [Op.like]: `%${name || '' }%`
-                        },
-                        email: {
-                            [Op.like]: `%${email || '' }%`
-                        }
-                    },
-                }
-            });
+
+            const users = await UserService.findAll(name as string, email as string)
+
             res.json(users);
         } catch (error) {
             console.error(error);
@@ -32,11 +21,7 @@ class UserController {
     async getByID(req: Request, res: Response): Promise<void> {
         try {
             const { id } = req.params
-            const userDb = await User.findOne({ 
-                attributes: { exclude: ['password'] },
-                where: { id } 
-            })
-            res.json(userDb);
+            res.json(await UserService.findOne(id as string));
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });
