@@ -14,19 +14,19 @@ POST {{host}}/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Dfelipe",
-    "email": "dfelipe@email.com",
+    "name": "Dalmo",
+    "email": "dalmo.dev@email.com",
     "password": "@123#321"
 }
 
 ###
-PUT {{host}}/api/users/29 HTTP/1.1
+PUT {{host}}/api/users/2 HTTP/1.1
 Content-Type: application/json
 
 {
     //"name": "Phillips",
-    "email": "phillips@gmail.com"
-    //"password": "123123"
+    //"email": "phillips@gmail.com"
+    "password": "123123"
 }
 
 ###

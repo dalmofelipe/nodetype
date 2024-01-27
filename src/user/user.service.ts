@@ -1,5 +1,5 @@
 import { Op } from "sequelize";
-import { User } from "../models/user.model";
+import { User } from "./user.model";
 
 class UserService {
 

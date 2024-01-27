@@ -1,4 +1,5 @@
 - [ ] implementar camanda user service
+- [ ] exception handling
 - [ ] implementar tests do crud com jest
 - [ ] finalizar user crud
 - [ ] subir para um repo no github
