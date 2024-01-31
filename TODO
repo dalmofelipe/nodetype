@@ -1,4 +1,4 @@
-- [ ] implementar camanda user service
+- [ ] completar camada user service
 - [ ] exception handling
 - [ ] implementar tests do crud com jest
 - [ ] finalizar user crud

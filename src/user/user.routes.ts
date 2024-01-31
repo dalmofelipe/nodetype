@@ -14,7 +14,7 @@ const router = Router();
  *   get:
  *     summary: Retorna a lista de usuários
  *     tags:
- *     - users
+ *       - users
  *     parameters:
  *       - in: query
  *         name: name
@@ -35,21 +35,42 @@ router.get('/users', UserController.getAll);
 
 /**
  * @swagger
- * /api/users/{id}:
- *   get:
- *     summary: Retorna o usuário do ID
- *     tags:
- *     - users
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         description: Numero do ID do usuário
- *         schema:
- *           type: integer
- *     responses:
- *       200:
- *         description: Retorna o usuário se encontrado
+ * paths:
+ *   /api/users/{id}:
+ *     get:
+ *       summary: Retorna o usuário do ID
+ *       tags:
+ *         - users
+ *       parameters:
+ *         - in: path
+ *           name: id
+ *           required: true
+ *           description: Número do ID do Usuário
+ *           schema:
+ *             type: integer
+ *       responses:
+ *         200:
+ *           description: Retorna o Usuário se encontrado
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: object
+ *                 properties:
+ *                   name:
+ *                     type: string
+ *                   email:
+ *                     type: string
+ *                   password:
+ *                     type: string
+ *         404:
+ *           description: Se Usuário Não Encontrado
+ *           content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  errors:
+ *                    type: string
  */
 router.get('/users/:id', UserController.getByID);
 
@@ -111,7 +132,7 @@ router.post('/users',
  *   put:
  *     summary: Atualiza dados do Usuário
  *     tags:
- *     - users
+ *       - users
  *     parameters:
  *       - in: path
  *         name: id
@@ -148,7 +169,7 @@ router.put('/users/:id',
  *   delete:
  *     summary: Exclui Usuário pelo ID
  *     tags:
- *     - users
+ *       - users
  *     parameters:
  *       - in: path
  *         name: id

@@ -18,7 +18,12 @@ class UserController {
     async getByID(req: Request, res: Response): Promise<void> {
         try {
             const { id } = req.params
-            res.json(await UserService.findOne(id as string));
+            const user = await UserService.findOne(id as string)
+            if(!user) {
+                res.status(404).json({ error: 'Usuário Não Encontrado' })
+                return
+            }
+            res.status(200).json(user);
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });
